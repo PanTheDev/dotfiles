@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source .env.installs
+source "$(dirname "${BASH_SOURCE[1]}")/utils.sh"
+source "$(this_folder)/.env.installs"
 
 # Check if curl is available and install it otherwise
 if [ -z $(command -v curl) ]; then

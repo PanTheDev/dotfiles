@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ../utils.sh
+source "$(dirname "${BASH_SOURCE[1]}")/utils.sh"
 
 # Install pixi
 if [ -z $(command -v pixi) ]; then

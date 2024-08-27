@@ -1,27 +1,32 @@
 #!/bin/bash
-
-THIS_FILE=$(realpath $(if [ -n "${BASH_SOURCE[1]}" ]; then echo "${BASH_SOURCE[1]}"; else echo "."; fi))
+NULL_FILE='.null'
+THIS_FILE=$( if [ -n "${BASH_SOURCE[1]}" ]; then echo $(realpath "${BASH_SOURCE[1]}"); else echo "$(realpath $(dirname "${BASH_SOURCE[0]}"))/$NULL_FILE"; fi)
 
 function for_item_in_list_do() {
     local list=$1
     local action=$2
-    local args="$@[2:]"
+    local args="${@:3}"
     for item in $list; do
         eval "$action $item $args"
     done
 }
 
-function get_parent_directory() {
+function get_parent_folder() {
     local path=$1
     realpath "$(dirname "$path")"
 }
 
 function this_folder() {
-    get_parent_directory $(this_file)
+    get_parent_folder $(this_file) || echo $THIS_FILE
 }
 
 function this_file() {
-    echo "$THIS_FILE"
+    local file_name=$(basename "$THIS_FILE")
+    if [ "$file_name" == "$NULL_FILE" ]; then
+        return 1
+    else
+        echo "$THIS_FILE"
+    fi
 }
 
 function replace_or_add_line() {

@@ -1,4 +1,5 @@
 #!/bin/bash
+source "$(dirname "${BASH_SOURCE[1]}")/utils.sh"
 
 # Install starship
 if [ -z $(pixi global list | grep starship ) ]; then
@@ -6,4 +7,4 @@ if [ -z $(pixi global list | grep starship ) ]; then
 fi
 
 # Configure starship
-cp -p ./configs/starship.toml "$HOME/.config/starship.toml"
+cp -p "$(get_parent_folder "$(this_folder)")/configs/starship.toml" "$HOME/.config/starship.toml"
