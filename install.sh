@@ -6,31 +6,20 @@ if [ $(whoami) = 'root' ]; then
     exit 1
 fi
 
-USER_HOME=/home/$(whoami)
-USER_BINS=/home/$(whoami)/bin
-mkdir -p $USER_BINS
-export PATH=$PATH:$USER_BINS
+source utils.sh
 
-# Check if curl is available and install it otherwise
-if command -v curl &> /dev/null; then
-    apt-get download curl
-    CURL_DEB=$(ls *curl*.deb)
-    dpkg -x $CURL_DEB $USER_BINS
-    if ! command -v curl &> /dev/null; then
-        echo failed to install curl
-        exit 1
-    fi
-fi
+# Functions
+function install_from_script() {
+    local $to_install
+    local $scripts_dir
+    bash "$scripts_dir/install_$to_install.sh"
+}
 
-# Install pixi
-if ! command -v pixi &> /dev/null; then
-    curl -fsSL https://pixi.sh/install.sh | bash
-fi
+# Installs
+source "$(this_folder)/installs/.env.installs"
+mkdir_if "$USER_BINS"
+prepend_to_PATH "$USER_BINS"
 
-# Install chezmoi
-(cd $USER_HOME; curl -fsLS get.chezmoi.io | bash )
-if ! command -v chezmoi &> /dev/null; then
-    echo failed to install chezmoi
-    exit 1
-fi
+for_item_in_list_do "$INSTALLS" "install_from_script" "$(this_folder)/installs"
+
 
