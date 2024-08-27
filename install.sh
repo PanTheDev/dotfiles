@@ -6,7 +6,7 @@ if [ $(whoami) = 'root' ]; then
     exit 1
 fi
 
-source utils.sh
+source "${BASH_SOURCE[0]}/utils.sh"
 
 # Functions
 function install_from_script() {
