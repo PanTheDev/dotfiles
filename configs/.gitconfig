@@ -1,0 +1,28 @@
+# Pan's config
+
+[core]
+editor = code
+eol = native
+autocrlf = input
+
+[help]
+autocorrect = 30
+
+[fetch]
+prune = true
+parallel = 0
+
+[checkout]
+workers = 0
+
+[color]
+ui = true
+
+[column]
+ui = true
+
+[merge]
+tool = code
+
+[diff]
+tool = code

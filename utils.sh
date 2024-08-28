@@ -11,13 +11,24 @@ function for_item_in_list_do() {
     done
 }
 
-function get_parent_folder() {
+function append_to_list() {
+    local list=$1
+    local new_item=$2
+    if [ -z "$list" ]; then
+        list="$new_item"
+    else
+        list+=" $new_item"
+    fi
+    echo "$list"
+}
+
+function parent_folder() {
     local path=$1
     realpath "$(dirname "$path")"
 }
 
 function this_folder() {
-    get_parent_folder $(this_file) || echo $THIS_FILE
+    parent_folder $(this_file) || echo $THIS_FILE
 }
 
 function this_file() {
@@ -96,3 +107,10 @@ function mkdir_if() {
     mkdir -p "$dirname"
 }
 
+function install_tar_gz() {
+    local tar_file=$1
+    local install_dir=$2
+
+    # Extract the tar.gz file to the install directory
+    tar -xvzf "$tar_file" -C "$install_dir" || return $?
+}
