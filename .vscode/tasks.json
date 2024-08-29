@@ -1,0 +1,13 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Install Pixi Environment",
+            "type": "shell",
+            "command": "pixi install -e development",
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        }
+    ]
+}

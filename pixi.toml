@@ -1,0 +1,22 @@
+[project]
+name = "dotfiles"
+platforms = ["linux-64"]
+channels = ["conda-forge"]
+
+[dependencies]
+python = "3.11.*"
+
+[activation]
+env = { PYTHONPATH = "$PYTHONPATH:panoplie/src" }
+
+[feature.main.dependencies]
+prompt-toolkit = "~=3.0"
+pydantic = "~=2.8"
+pygments = "~=2.18"
+
+[feature.development.dependencies]
+ruff = "~=0.6.2"
+
+[environments]
+development = { features = ["main", "development"] }
+main = { features = ["main"] }

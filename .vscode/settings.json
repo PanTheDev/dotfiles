@@ -1,0 +1,8 @@
+{
+    "python.defaultInterpreterPath": ".pixi/envs/development/bin/python",
+    "ruff.interpreter": [
+        ".pixi/envs/development/bin/ruff"
+    ],
+    "ruff.configuration": "ruff.toml",
+    "ruff.nativeServer": "on"
+}
