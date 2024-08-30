@@ -1,6 +1,7 @@
 {
     "files.exclude": {
-        "panoplie": "true"
+        "panoplie": "true",
+        "dotfiles": "true"
     },
     "python.defaultInterpreterPath": ".pixi/envs/development/bin/python",
 }

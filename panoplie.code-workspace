@@ -7,6 +7,10 @@
         {
             "path": "./panoplie/src",
             "name": "panoplie"
+        },
+        {
+            "path": "./dotfiles",
+            "name": "dotfiles"
         }
     ],
     "settings": {
