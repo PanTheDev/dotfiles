@@ -1,0 +1,41 @@
+{
+    "folders": [
+        {
+            "path": ".",
+            "name": "Workspace"
+        },
+        {
+            "path": "./panoplie/src",
+            "name": "panoplie"
+        }
+    ],
+    "settings": {
+        "ruff.interpreter": [
+            ".pixi/envs/development/bin/ruff"
+        ],
+        "ruff.configuration": "ruff.toml",
+        "ruff.nativeServer": "on"
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "charliermarsh.ruff",
+            "tamasfe.even-better-toml",
+            "timonwong.shellcheck",
+            "actboy168.tasks"
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Install Pixi Environment",
+                "type": "shell",
+                "command": "pixi install -e development",
+                "runOptions": {
+                    "runOn": "folderOpen"
+                }
+            }
+        ]
+    }
+}
