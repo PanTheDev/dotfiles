@@ -4,7 +4,7 @@ platforms = ["linux-64"]
 channels = ["conda-forge"]
 
 [dependencies]
-python = "3.11.*"
+python = "3.12.*"
 
 [activation]
 env = { PYTHONPATH = "$PYTHONPATH:panoplie/src" }
@@ -13,6 +13,12 @@ env = { PYTHONPATH = "$PYTHONPATH:panoplie/src" }
 prompt-toolkit = "~=3.0"
 pydantic = "~=2.8"
 pygments = "~=2.18"
+simple-parsing = "~=0.1.5"
+
+[feature.main.pypi-dependencies]
+
+[feature.main.tasks]
+panoplie = { cmd = ["python", "-m", "panoplie"] }
 
 [feature.development.dependencies]
 ruff = "~=0.6.2"

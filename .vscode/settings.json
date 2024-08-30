@@ -4,4 +4,8 @@
         "dotfiles": "true"
     },
     "python.defaultInterpreterPath": ".pixi/envs/development/bin/python",
+    "python.terminal.activateEnvironment": false,
+    "python.analysis.extraPaths": [
+        "panoplie/src/"
+    ]
 }
