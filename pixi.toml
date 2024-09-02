@@ -7,15 +7,17 @@ channels = ["conda-forge"]
 python = "3.12.*"
 
 [activation]
-env = { PYTHONPATH = "$PYTHONPATH:panoplie/src" }
+scripts = ["export_pythonpath.sh"]
 
 [feature.main.dependencies]
 prompt-toolkit = "~=3.0"
 pydantic = "~=2.8"
 pygments = "~=2.18"
+semver = "*"
 simple-parsing = "~=0.1.5"
 
 [feature.main.pypi-dependencies]
+pydantic-extra-types = "~=2.9"
 
 [feature.main.tasks]
 panoplie = { cmd = ["python", "-m", "panoplie"] }

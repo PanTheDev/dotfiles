@@ -5,7 +5,7 @@
             "name": "Workspace"
         },
         {
-            "path": "./panoplie/src",
+            "path": "./panoplie",
             "name": "panoplie"
         },
         {
@@ -14,11 +14,22 @@
         }
     ],
     "settings": {
+        "[python]": {
+            "editor.defaultFormatter": "charliermarsh.ruff",
+            "editor.formatOnPaste": true,
+        },
+        "editor.formatOnSaveMode": "file",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "always",
+            "source.organizeImports": "always"
+        },
         "ruff.interpreter": [
-            ".pixi/envs/development/bin/ruff"
+            "${workspaceFolder:Workspace}/.pixi/envs/development/bin/python"
         ],
         "ruff.configuration": "ruff.toml",
-        "ruff.nativeServer": "on"
+        "ruff.nativeServer": "on",
+        "ruff.organizeImports": true,
     },
     "extensions": {
         "recommendations": [
