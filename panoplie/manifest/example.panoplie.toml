@@ -1,0 +1,17 @@
+[prompts]
+ssh-password = { prompt = "What is your password?", input_type = "secret", when = "post-install" }
+fruit = { prompt = "What is your favorite fruit?", input_type = "choice", choices = [
+    "apple",
+    "orange",
+] }
+email = { prompt = "What is your email?", input_type = "text", validation = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$" }
+
+[tasks]
+
+[install]
+pixi = { handler = "shell", options = { url = "https://pixi.sh/install.sh" }, env = { VERSION = "v0.28.2" } }
+openssh = { handler = "pixi", options = { version = "*" } }
+
+[dotfiles]
+bashrc = { action = "copy", src = "dotfiles/dotbashrc", target = "~/.bashrc" }
+pixi-config = { action = "copy", src = "dotfiles/dotpixi/config.toml", target = "~/.pixi", condition = "prompt.ssh-password" }
