@@ -8,10 +8,10 @@ email = { prompt = "What is your email?", input_type = "text", validation = "^[a
 
 [tasks]
 
-[install]
+[installs]
 pixi = { handler = "shell", options = { url = "https://pixi.sh/install.sh" }, env = { VERSION = "v0.28.2" } }
 openssh = { handler = "pixi", options = { version = "*" } }
 
-[dotfiles]
-bashrc = { action = "copy", src = "dotfiles/dotbashrc", target = "~/.bashrc" }
-pixi-config = { action = "copy", src = "dotfiles/dotpixi/config.toml", target = "~/.pixi", condition = "prompt.ssh-password" }
+[dotfiles.copy]
+bashrc = { src = "dotfiles/dotbashrc", target = "~/.bashrc" }
+pixi-config = { src = "dotfiles/dotpixi/config.toml", target = "~/.pixi", condition = "prompt.ssh-password" }
